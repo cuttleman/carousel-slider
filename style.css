@@ -1,0 +1,50 @@
+@import "./reset.css";
+
+body,html {
+    overflow: hidden;
+}
+
+.slider {
+    width: 100%;
+    display: flex;
+}
+
+.slide {
+    position: absolute;
+    top:0;
+    left:0;
+    float: left;
+    min-width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 60px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    z-index: 0;
+}
+
+#active {
+    z-index: 2;
+}
+
+#prev {
+    z-index: 1;
+}
+
+.slide:nth-child(1) {
+    background-color: #a29bfe;
+}
+.slide:nth-child(2) {
+    background-color: #74b9ff;
+}
+.slide:nth-child(3) {
+    background-color: #fd79a8;
+}
+.slide:nth-child(4) {
+    background-color: #fdcb6e;
+}
+.slide:nth-child(5) {
+    background-color: #00cec9;
+}
