@@ -25,14 +25,6 @@ body,html {
     z-index: 0;
 }
 
-#active {
-    z-index: 2;
-}
-
-#prev {
-    z-index: 1;
-}
-
 .slide:nth-child(1) {
     background-color: #a29bfe;
 }
