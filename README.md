@@ -9,4 +9,4 @@ create carousel slider sample (in place, slide)
 [x] Srrrr... Slide (not buttonm, not dot)
 
 
-<video src="/videos/nextSlider.mp4" autoplay loop width="200px" height="100px" type="video/mp4"></video>
+<video src="nextSlide.mp4" autoplay loop muted width="500px" height="300px" type="video/mp4"></video>
