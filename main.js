@@ -1,40 +1,34 @@
+const PREV = "prev";
+const ACTIVE = "active";
+const NEXT = "next";
+
 const first = document.querySelector(".slide:nth-child(1)");
 
-const nextSlideEvent = (duration) => {
+const slideEvent = () => {
   // 매 함수 호출시마다 브라우저 width 길이를 업뎃함 -> 애니메이션 변수로 사용하기떄문
   const WINDOW = window.innerWidth;
-  const PREV = "prev";
-  const ACTIVE = "active";
-  const NEXT = "next";
   const activeEl = document.getElementById(ACTIVE);
   const nextEl = document.getElementById(NEXT);
   const prevEl = document.getElementById(PREV);
-  if (!activeEl) {
-    first.id = ACTIVE;
-    first.style.zIndex = 1;
-    first.nextElementSibling.id = NEXT;
-  } else {
+  if (activeEl) {
     if (prevEl) {
       prevEl.removeAttribute("id");
     }
     activeEl.id = PREV;
     nextEl.id = ACTIVE;
-    first.removeAttribute("style");
     activeEl.animate(
       // 실행 시점에선 nextEl은 Prev 상태의 Element를 가리킴
       {
         transform: [`translateX(0)`, `translateX(-${WINDOW}px)`],
-        zIndex: [1, 1],
       },
-      { duration: duration ? duration : 0, fill: "forwards" }
+      1000
     );
     nextEl.animate(
       // 실행 시점에선 nextEl은 현재 Active 상태의 Element를 가리킴
       {
         transform: [`translateX(${WINDOW}px)`, `translateX(0)`],
-        zIndex: [1, 2],
       },
-      { duration: duration ? duration : 0, fill: "forwards" }
+      1000
     );
     if (!nextEl.nextElementSibling) {
       first.id = NEXT;
@@ -44,6 +38,11 @@ const nextSlideEvent = (duration) => {
   }
 };
 
-nextSlideEvent(1000);
-// window.addEventListener("click", () => nextSlideEvent(1000));
-setInterval(() => nextSlideEvent(1000), 3500);
+const init = () => {
+  // absolute해준 slide들이 오름차순으로 정렬되어있기때문에 onload되었을때 처음 Element를 맨 위로 올려줌
+  first.id = ACTIVE;
+  first.nextElementSibling.id = NEXT;
+  setInterval(() => slideEvent(), 3500);
+};
+
+init();
